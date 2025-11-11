@@ -27,6 +27,11 @@ token = "66950322bf134aeda8255e083b983bbc"
 symbol = "GOOGL"
 csv_data = fetch_stock_data(symbol, token)
 
+# Replace header with capitalized version
+lines = csv_data.split('\n')
+lines[0] = 'Date;Open;High;Low;Close;Volume'
+csv_data = '\n'.join(lines)
+
 # Write to CSV file named as symbol.csv
 with open(f"{symbol}.csv", "w") as f:
     f.write(csv_data)
